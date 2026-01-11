@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CARSKE | Streetwear</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">CARSKE</div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>CARSKE</h1>
+    <p>Driven by speed. Built for the streets.</p>
+    <a href="shop.html" class="btn">Shop Now</a>
+  </div>
+</section>
+
+<!-- CATEGORY SLIDER -->
+<section class="category-slider reveal">
+  <div class="slider-card">
+    <div class="slider">
+
+      <div class="slide active">
+        <img src="images/phonecase.png" alt="Phone Cases">
+        <div class="slide-text">
+          <h2>Phone Cases</h2>
+          <p>Car-themed phone cases from <strong>KES 1,600</strong></p>
+          <a href="shop.html" class="btn dark">Shop Now</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="images/hoodie.png" alt="Hoodies">
+        <div class="slide-text">
+          <h2>Hoodies</h2>
+          <p>Premium street hoodies inspired by car culture</p>
+          <a href="shop.html" class="btn dark">Shop Now</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="images/tshirt.png" alt="T-Shirts">
+        <div class="slide-text">
+          <h2>T-Shirts</h2>
+          <p>Statement car T-shirts from <strong>KES 1,600</strong></p>
+          <a href="shop.html" class="btn dark">Shop Now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FEATURED PRODUCTS -->
+<section class="products reveal">
+  <h2>Featured Drops</h2>
+
+  <div class="grid">
+    <div class="card reveal">
+      <img src="images/pinkporsche.jpg" alt="Pink Porsche Tee">
+      <h3>Pink Porsche GT3 Tshirt</h3>
+      <p>KES 1,600</p>
+      <button class="btn">View Product</button>
+    </div>
+
+    <div class="card reveal">
+      <img src="images/wnp.jpg" alt="WNP Tee">
+      <h3>Porsche GT3 Tshirt White</h3>
+      <p>KES 1,600</p>
+      <button class="btn">View Product</button>
+    </div>
+
+    <div class="card reveal">
+      <img src="images/subaru.jpg" alt="Subaru Tee">
+      <h3>Subaru N10 STI Tshirt</h3>
+      <p>KES 1,600</p>
+      <button class="btn">View Product</button>
+    </div>
+
+    <div class="card reveal">
+      <img src="images/pinkporsche.jpg" alt="Pink Porsche Tee">
+      <h3>Pink Porsche Tee</h3>
+      <p>KES 1,600</p>
+      <button class="btn">View Product</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 CARSKE · @carske.shop
+</footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    reveals.forEach(el => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+      const revealPoint = 120;
+
+      if (elementTop < windowHeight - revealPoint) {
+        el.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+</script>
+
+<script>
+  const slides = document.querySelectorAll(".slide");
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 4500);
+</script>
+
+
+</body>
+</html>

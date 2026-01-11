@@ -1,0 +1,477 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: black;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.9);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 26px;
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* HERO */
+.hero {
+  height: 65vh;              /* REDUCED from tall banner */
+  min-height: 420px;
+  background: url("images/banners.jpg") center/cover no-repeat;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  color: white;
+  z-index: 2;
+
+  animation: fadeUp 1.2s ease forwards;
+}
+
+
+.hero h1 {
+  font-size: 80px;
+  letter-spacing: 6px;
+}
+
+.hero p {
+  margin-top: 15px;
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 40px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+  transform: translateY(-3px);
+}
+
+/* PRODUCTS */
+.products {
+  padding: 120px 60px;
+}
+
+.products h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+  gap: 20px;
+}
+
+.card {
+  background: #fff; /* changed from #111 to white */
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: 8px;
+  color: #000; /* text color black on white */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* subtle shadow for depth */
+}
+
+.card img {
+  width: 180px;
+  height: auto;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+
+.card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+  color: #000;
+}
+
+.card p {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #000;
+}
+
+.card button {
+  padding: 10px 20px;
+  background: black; /* button now black for contrast */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background: #4da3ff;
+  color: white;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* SCROLL FADE-UP ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger effect for product cards */
+.card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* HERO TEXT ANIMATION */
+.hero-content h1 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 1s ease forwards;
+}
+
+.hero-content p {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.hero-content .btn {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* KEYFRAMES */
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CATEGORY SLIDER */
+.category-slider {
+  margin: 5px auto;
+  padding: 10px;
+  max-width: 1100px;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+
+.slider {
+  position: relative;
+}
+
+.slide {
+  display: none;
+  align-items: center;
+  gap: 60px;
+  animation: slideFade 1s ease forwards;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.slide img {
+  width: 45%;
+  border-radius: 14px;
+  transform: translateX(-60px);
+  opacity: 0;
+  animation: imageMove 1s ease forwards;
+}
+
+.slide-text {
+  width: 45%;
+  transform: translateY(40px);
+  opacity: 0;
+  animation: textMove 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.slide-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 3px;
+}
+
+.slide-text p {
+  margin: 20px 0;
+  font-size: 18px;
+  color: #ddd;
+}
+
+.btn.dark {
+  border: 2px solid black;
+  color: white;
+}
+
+.btn.dark:hover {
+  background: white;
+  color: black;
+}
+
+/* ANIMATIONS */
+@keyframes slideFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes imageMove {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes textMove {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .slide {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slide img,
+  .slide-text {
+    width: 100%;
+  }
+}
+
+
+/* CATEGORY SLIDER SECTION */
+.category-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin: 5px auto;
+}
+
+
+/* Rounded container */
+.slider-card {
+  width: 90%;
+  max-width: 1100px;
+
+  background: #000;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+
+  padding: 20px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Slider */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 260px;
+}
+
+
+/* Slides */
+.slide {
+  display: none;
+  align-items: center;
+  gap: 20px;
+  animation: slideFade 0.6s ease;
+}
+
+.slide.active {
+  display: flex;
+}
+
+/* Images */
+.slide img {
+  width: 180px;
+  height: auto;
+  border-radius: 14px;
+  transform: translateX(-20px);
+  opacity: 0;
+  animation: imgIn 0.6s ease forwards;
+}
+
+/* Text */
+.slide-text {
+  color: #fff;
+  max-width: 400px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: textIn 0.6s ease forwards 0.2s;
+}
+
+.slide-text h2 {
+  margin-bottom: 6px;
+}
+
+.slide-text p {
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+/* Button */
+.btn.dark {
+  background: #fff;
+  color: #000;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn.dark:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes slideFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imgIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes textIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FORCE ALL SECTION GAPS TO BE VERY SMALL */
+section {
+  margin: 0 !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+/* HERO (BANNER) – REMOVE EXTRA SPACE BELOW */
+.hero {
+  margin-bottom: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+/* CATEGORY SLIDER – TIGHT SPACING */
+.category-slider {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+  padding: 15px !important;
+}
+
+/* FEATURED PRODUCTS – REMOVE TOP GAP */
+.products {
+  margin-top: 15px !important;
+  padding-top: 15px !important;
+  
+}
+
+
+
+
